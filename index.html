@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+     <!--style-->
+    <link rel="stylesheet" href="./style.css">
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@800&display=swap" rel="stylesheet">
+    <!---bootstrap-link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+</head>
+<body>
+    <div id="container">
+        <div id="display">
+        <p id="dis" ></p>
+        </div>
+        <div id="num">
+        <button id="1" value="1" onclick="one()" ><p>1</p></button>
+        <button id="2"  value="2" onclick="two()" ><p>2</p></button>
+        <button id="3"  value="3" onclick="three()" ><p>3</p></button>
+        <button  id="4" value="4" onclick="four()" ><p>4</p></button>
+        <button id="5"  value="5" onclick="five()" ><p>5</p></button>
+        <button id="6"  value="6" onclick="six()" ><p>6</p></button>
+        <button id="7"  value="7" onclick="seven()" ><p>7</p></button>
+        <button  id="8" value="8" onclick="eight()" ><p>8</p></button>
+        <button  id="9"  value="9" onclick="nine()" ><p>9</p></button>
+        <button  id="0" value="0"  onclick="zero()" ><p>0</p></button>
+        <button  id="dot" value="." onclick="dec()"><p>.</p></button>
+        <button id="+" onclick="add()" ><p>+</p></button>
+        <button id="-" onclick="sub()" ><p>-</p></button>
+        <button id="*" onclick="multi()" ><p>*</p></button>
+        <button id="/" onclick="div()"><p>/</p></button>
+        <button id="=" onclick="equal()" ><p>=</p></button>
+        <button id="D" onclick="del()" ><p><i class ="fa fa-arrow-left"></i></p></button>
+        <button id="clear" onclick="AC()" ><p><i class ="fa fa-trash"></i></p></button>
+          </div>
+        
+        </div>
+   <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
