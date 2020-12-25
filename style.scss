@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander&display=swap');
 $color1:black;
 $color2:white;
 $color3:rgb(255, 0, 0);
-$tran:0.4s;
-$fs:30px;
+$tran:1s;
+$fs:25px;
 $fs2:40px;
 @mixin flex($direction,$justify) {
    display: flex;
@@ -10,64 +11,239 @@ $fs2:40px;
    justify-content: $justify;
    align-items: center;    
 }
-
+@mixin CR($C1,$C2,$R1,$R2) {
+    grid-column-start: $C1;
+    grid-column-end: $C2;
+    grid-row-start: $R1;
+    grid-row-end: $R2;
+}
 body {
-    background:$color2;
+    background:$color1;
     width:100vw;
     height:100vh;
-    position:fixed;
-    @include flex(row,center);
-
-    #container {
-    background-color:$color1;
-    
-    width:75vw;
-    height:75vh;
-   // border: green 2px inset;
-    @include flex(column,space-evenly);
-
+    margin: 0px;
+    overflow: hidden;
+    @include flex(column,center);
+    font-family: 'Grandstander', cursive;
+    #history {
+        color: $color2;
+        background-color: rgba(0, 0, 0, 0);
+        padding:5px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        margin:5px;
+        border: none;
+        transition: $tran;
+        font-size: $fs;
+        z-index: 15;
+        &:focus,&:hover {
+            outline: none;
+        }
+    } 
+    #history-D {
+        border: rgba(136, 135, 135, 0.712) 3px solid;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        width: 90vw;
+        height: 90vh;
+        position: absolute;
+        z-index: 1;
+        @include flex (column,flex-start);
+        display: none;
+        overflow: hidden auto;
+        scroll-behavior: smooth;
+        p {
+            background: transparent;
+            overflow-wrap: break-word;
+            width: 95%;
+            height:auto;
+            font-size: $fs;
+            color: white;
+            padding: 7px;
+            margin: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+    }
     #display {
      font-size: $fs;
      text-align:right;
      border: $color2 3px inset;
-     width:74vw;
-     height:13vh;
-     background-color: $color1;
+     border-radius:10px;
+     overflow: auto;
+     overflow-wrap: break-word;
+     margin: 1vh 1vw;
+     width:80vw;
+     min-height:13vh;
+     max-height: 32vh;
+     background-color: transparent;
      color: $color2; 
      p {
-      padding-right: 1vw;     
+      padding-right: 1vw;  
+      transition: $tran;   
      }
+    
     }
 
     #num {
-     
        // border: chartreuse 3px inset;
-        width:74vw;
+        width:80vw;
         height:58vh;
         display:grid;
         grid-template-columns: repeat(4,1fr);
         grid-template-rows: repeat(5,1fr);
         button {
-            background-color:$color1;
+            background-color:transparent;
             color: $color2;
             overflow:hidden;
             @include flex(row , center);
             border: $color2 1px inset;
             transition: $tran;
-             &:hover {
-             border: $color3 5px inset;
-              p {
-                font-size:45px;
-                color:$color3;  }
-             }
+            font-family: 'Grandstander', cursive;
             p {
-             font-size:$fs; 
-             transition: $tran;
-             &:hover {
-                 font-size: $fs2;
+                font-size: 25px;
+                transition: 1s;
+            }
+             &:focus {
+                 outline: none;
              }
             }
+            #one {
+                @include CR(1,2,1,2);
+            }
+            #two {
+                @include CR(2,3,1,2);
+                    }
+            #three {
+                @include CR(3,4,1,2);
+                    }
+            #four {
+                @include CR(1,2,2,3);
+                    }
+            #five {
+                @include CR(2,3,2,3);
+                    }
+            #six {
+                @include CR(3,4,2,3);
+                    }
+            #two {
+                @include CR(2,3,1,2);
+                    }
+            #seven {
+                @include CR(1,2,3,4);
+                    }
+            #eight {
+                @include CR(2,3,3,4);
+                    }
+            #nine {
+                @include CR(3,4,3,4);
+                    }
+            #add {
+                @include CR(4,5,1,2);
+                    }
+            #sub {
+                @include CR(4,5,2,3);
+                    }
+            #multi {
+                @include CR(4,5,3,4);
+                    }
+            #div {
+                @include CR(4,5,4,5);
+                    }
+            #dot {
+                @include CR(1,2,4,5);
+                    }
+            #zero {
+                @include CR(2,3,4,5);
+                    }
+
+            #equal {
+                @include CR(3,4,4,5);
+                background-color: rgba(0, 255, 34, 0.05);
+                &:hover {
+                    background-color: rgba(0, 255, 34, 0.01);  
+                }
+                    }
+            #del {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 5;
+                grid-row-end: 6;
+                    }
+            #clear {
+                grid-column-start: 2;
+                grid-column-end: 4;
+                grid-row-start: 5;
+                grid-row-end: 6;
+                    }
+            #moreLess {
+                grid-column-start: 4;
+                grid-column-end: 5;
+                grid-row-start: 5;
+                grid-row-end: 6;
+                    }
+            .advanced {
+                    display:none;
+                } 
+                .absolute {
+                    background-color: rgba(255, 0, 0, 0.05);
+                    &:hover {
+                        background-color: rgba(255, 0, 0, 0.01);
+                    }
+                }
+                .basic {
+                    background-color: rgba(0, 0, 255, 0.05);
+                    &:hover {
+                        background-color: rgba(0, 0, 255, 0.01);
+                    }
+                }    
+        }
+} // body-end
+
+::-webkit-scrollbar {
+    width:1vw;
+}
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0,0);   
+}
+::-webkit-scrollbar-thumb {
+   background-color: rgba(255, 255, 255,0.8);
+   scroll-snap-type: proximity;
+   &:hover {
+    background-color: rgba(255, 255, 255,1); 
+   }
+}
+
+@keyframes trash {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    30% {
+        transform: rotateZ(10deg);
+    }
+    60% {
+        transform: rotateZ(-20deg);
+    }
+}
+@media screen and (min-width:800px),(min-height:800px) {
+  $fs:35px;
+    body {
+        #history {font-size: $fs;}
+        #history-D {
+            p {
+                font-size: $fs;
+            }
+        }
+        #display {
+              font-size: $fs;
+        }
+        #num {
+          button {
+           p {
+              font-size: $fs;
+           }
+          }
         }
     }
-    } //container-end
-} // body-end
+}
